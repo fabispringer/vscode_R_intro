@@ -25,13 +25,13 @@ Visual Studio Code (VS Code) as a fast, lightweight editor that you can turn int
 - **Built-in SSH** for seamless server/cluster access
 - **Integrated terminal** that respects Conda environments (both Python & R)
 - **Git integration** and **GitHub Copilot** support ;)
-- All **settings** managed via **txt** files, making setup easy to share, change, and rebuild
+- All **settings** managed via **json** files, making setup easy to share, change, and rebuild
 
 ---
 
 ## 1. Setup VSCode for R 
-Disclaimer: Everything below is based on my personal experience and preferences. 
-I think with this setup you should be able to use R in VSCode after a few minutes. However I'd not expect to be producive from day 1. For me it took a few days of getting used to the new environment, fix bugs and google weird error messages. However: Once you overcome the initial hurdles, you will love the experience!
+Disclaimer: Everything below is based on my personal experience and preferences.
+With this setup, you should be able to use R in VSCode within a few minutes. However, I wouldn't expect to be productive from day one. It took me a few days to get used to the new environment, fix bugs, and search for solutions to weird error messages. That said, once you overcome the initial hurdles, you will love the experience!
 ### 1.1 Setup a conda environment for R
 1) (Install Miniforge/Miniconda/Anaconda)
 2) For EMBL users: 
@@ -43,9 +43,9 @@ channels:
   - conda-forge
   - bioconda
 ```
-Don't update VSCode >1.85 due to incopatibilities with `amur` and `nile` (Disable autoupdate)
+Don't update VSCode >1.85 due to incompatibilities with `amur` and `nile` (Disable autoupdate)
 
-3) Create and conda environment for R and activate: 
+3) Create a conda environment for R and activate:
 `conda create -n r_env_4.3.3` 
 `conda activate r_env_4.3.3`
 [Suggestion for ARM Mac users in their local installation: force environment to consider only osx-86 packages: ``conda config --env --set subdir osx-64`` (prevents conflicts in my personal experience and most packages are available for osx-64)]
@@ -82,8 +82,8 @@ if (interactive() && Sys.getenv("RSTUDIO") == "") {
 }
 ```
 
-### 1.2 In VSCode
-1) Install the R excension from the extensions marketplace
+### 1.3 In VSCode
+1) Install the `R` extension from the extensions marketplace
 2) Other suggested extensions: `Remote-SSH`,`Path Autocomplete`,`Better Comments`, `Color Highlight`, `Git Graph`, `Github Copilot`
 3) Set paths correctly in `settings.json` of VSCode
 ```
@@ -179,7 +179,7 @@ Open `keybindings.json` and add:
     }
   }
 ```
-asd
+
 </details>
 
 
@@ -221,15 +221,15 @@ Create new tmux session `tmux new -s zellerGM`; detach with `cmd+b +d`, reconnec
 2) Open Project folder and terminal
 3) Start `tmux` session
 4) Request an interactive slurm job
-  `srun -p bigmem -c 4 --mem-per-cpu=4G --pty -J "resssion" -t 24:00:00 /bin/bash`.
+  `srun -p bigmem -c 4 --mem-per-cpu=4G --pty -J "rssesion" -t 24:00:00 /bin/bash`.
 5) Wait until resources were allocated and you are connected.
 6) Activate the R conda environment, launch radian, start working.
 
 ### 2.3 GitHub Copilot: :rocket:
 [Demo 3]
-1) Register on Github.com to GitHub Pro (free for acedemics/students)
+1) Register on Github.com to GitHub Pro (free for academics/students)
 2) Get Copilot extension for VSCode and login with GitHub credentials
 3) (A privacy note: On Github.com/settings/copilot/features uncheck "Allow GitHub to use my data for product improvements")
-4) Get inline code suggestions with Tab-autocomplete or the chat feature. Set instrucitons via prompting directly inside the script in the comments.
+4) Get inline code suggestions with Tab-autocomplete or the chat feature. Set instructions via prompting directly inside the script in the comments.
 5) :exclamation: **ALWAYS double check! Never trust blindly!** :exclamation:
-Outsourse boring tasks (generation of color codes, cosmetic changes in plots, code completion for loop structures etc.) and never accept code that you don't understand!
+Outsource boring tasks (generation of color codes, cosmetic changes in plots, code completion for loop structures etc.) and never accept code that you don't understand!
