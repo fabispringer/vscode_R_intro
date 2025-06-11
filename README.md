@@ -64,7 +64,7 @@ Some R packages might not be available in conda. Within the R session one can al
 `devtools::install_git('https://git.embl.de/grp-zeller/ggembl.git')`
 
 ### 1.2 Modify `~/.Rprofile`
-
+If you don't have an `~/.Rprofile` file yet, create it. This file is executed every time you start R and can be used to set options, load packages, or run code automatically.
 ```
 # ~/.Rprofile
 if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
@@ -106,6 +106,7 @@ if (interactive() && Sys.getenv("RSTUDIO") == "") {
 ```
 4) Add some convenient shortcuts equivalent to RStudio:
 Open `keybindings.json` and add:
+Important: Replace "Cmd" with "Ctrl" if you work on windows
 <details>
 <summary>Click to unfold</summary>
 
